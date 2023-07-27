@@ -29,3 +29,7 @@
 .hero-bg {
   background-color: #eaeeef;
 }
+
+.splide {
+  height: 100% !important;
+}

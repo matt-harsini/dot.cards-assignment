@@ -1,6 +1,6 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-# General comments
+## General comments
 
 Fun challenge, really enjoyed implementing a design from figma. If I had more time and I needed to deploy this wesbite to production, I would make sure that older browsers are compatible with this website by using appropriate CSS fallbacks when necessary.
 
