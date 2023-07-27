@@ -33,3 +33,7 @@
 .splide {
   height: 100% !important;
 }
+
+.splide__pagination__page {
+  background: #201b21 !important;
+}

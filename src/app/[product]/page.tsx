@@ -36,8 +36,15 @@ export default async function Product({
           </div>
           <div className="border-b-[1px] pb-4" />
           <div className="p-8">
-            <span className="text-xl font-bold tracking-tight">Quantity</span>
+            <span className="text-xl font-bold tracking-tight mb-2 inline-block">
+              Quantity
+            </span>
             <Quantity />
+          </div>
+          <div className="px-7 pb-8">
+            <button className="mt-12 lg:mt-0 flex gap-x-2 justify-center items-center black py-5 px-20 rounded-xl w-full lg:mx-0">
+              <span className="text-white font-bold text-lg">Add to cart</span>
+            </button>
           </div>
         </div>
         <div>
