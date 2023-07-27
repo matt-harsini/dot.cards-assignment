@@ -10,7 +10,7 @@ export default function Footer() {
             © 2023 dot.cards text task. All rights reserved
           </span>
         </div>
-        <div className="flex gap-x-2">
+        <div className="flex gap-x-6">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"

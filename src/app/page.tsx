@@ -1,28 +1,7 @@
-import { Cart, Logo, Card } from "@/components";
-import { Footer, Navbar } from "@/components/ui";
+import { Footer, Navbar, Slider } from "@/components/ui";
 import Image from "next/image";
 
-type Product = {
-  id: number;
-  url: string;
-  name: string;
-  price: string;
-  brand: string;
-};
-
-async function getData() {
-  const res = await fetch("http://localhost:3000/api", { cache: "no-store" });
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-
-  return res.json();
-}
-
 export default async function Home() {
-  const data = await getData();
-
   return (
     <main className="flex flex-col h-full">
       <Navbar />
@@ -30,13 +9,13 @@ export default async function Home() {
         <header className="w-full mt-8 max-w-7xl mx-auto hero-bg flex md:flex-row flex-col-reverse gap-x-4 rounded-3xl p-10 px-16">
           <div className="flex flex-col flex-1 items-stretch md:items-start justify-around gap-y-4">
             <div>
-              <h3 className="mt-6 md:mt-0 text-[#EC5E2A] font-bold text-5xl text-center md:text-start">
+              <h3 className="mt-6 md:mt-0 text-[#EC5E2A] font-bold text-4xl xl:text-5xl text-center md:text-start">
                 25% off
               </h3>
-              <h1 className="text-6xl font-bold mt-4 text-center md:text-start">
+              <h1 className="text-5xl xl:text-6xl font-bold mt-4 text-center md:text-start">
                 Summer Sale
               </h1>
-              <p className="text-xl mt-8 text-center md:text-start">
+              <p className="text-lg xl:text-xl mt-8 text-center md:text-start">
                 Discover our summer styles with discount
               </p>
             </div>
@@ -66,17 +45,8 @@ export default async function Home() {
             />
           </div>
         </header>
-        <section className="max-w-7xl mx-auto mt-16">
-          <h3 className="text-4xl font-bold tracking-tight">
-            Explore our latest drops
-          </h3>
-          <div className="flex gap-x-8 mt-8">
-            {data.map((product: Product) => {
-              return <Card key={product.id} {...product} />;
-            })}
-          </div>
-        </section>
       </div>
+      <Slider />
       <Footer />
     </main>
   );
