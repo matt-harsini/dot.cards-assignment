@@ -20,12 +20,24 @@ export default function Slider() {
   const btnNext = useRef<any>();
 
   useEffect(() => {
-    btnPrev.current?.addEventListener("click", () => {
+    const goPrev = () => {
       splide.current?.go("-1");
-    });
-    btnNext.current?.addEventListener("click", () => {
+    };
+
+    const goNext = () => {
       splide.current?.go("+1");
-    });
+    };
+
+    const btnLeft = btnPrev.current;
+    const btnRight = btnNext.current;
+
+    btnLeft.addEventListener("click", goPrev);
+    btnRight.addEventListener("click", goNext);
+
+    return () => {
+      btnLeft.removeEventListener("click", goPrev);
+      btnRight.removeEventListener("click", goNext);
+    };
   }, []);
 
   return (
@@ -70,7 +82,6 @@ export default function Slider() {
             fill="none"
           >
             <path
-              opacity="0.3"
               d="M13.9922 18.9922C14.2734 18.9922 14.5234 18.8984 14.7109 18.7109C15.1172 18.3359 15.1172 17.6797 14.7109 17.3047L9.42969 11.9922L14.7109 6.71094C15.1172 6.33594 15.1172 5.67969 14.7109 5.30469C14.3359 4.89844 13.6797 4.89844 13.3047 5.30469L7.30469 11.3047C6.89844 11.6797 6.89844 12.3359 7.30469 12.7109L13.3047 18.7109C13.4922 18.8984 13.7422 18.9922 13.9922 18.9922Z"
               fill="#201B21"
             />
