@@ -1,5 +1,5 @@
 import { Footer, Navbar, ProductSlider } from "@/components/ui";
-import Quantity from "@/components/ui/Quantity";
+import AddToCart from "@/components/ui/AddToCart";
 import Image from "next/image";
 
 async function getData(id: string) {
@@ -24,29 +24,7 @@ export default async function Product({
       <Navbar />
       <div className="flex-1 max-w-7xl grid grid-cols-1 lg:grid-cols-2 p-4 mx-auto gap-x-12 gap-y-6">
         <ProductSlider data={data} />
-        <div className="rounded-3xl shadow-sm flex flex-col gap-y-4">
-          <div className="flex-col items-start gap-y-3 flex p-8">
-            <div>
-              <h3 className="text-2xl font-bold tracking-tight">
-                {data.brand}
-              </h3>
-              <span className="text-lg text-[#67696E]">{data.name}</span>
-            </div>
-            <span className="text-2xl font-medium">{data.price}</span>
-          </div>
-          <div className="border-b-[1px] pb-4" />
-          <div className="p-8">
-            <span className="text-xl font-bold tracking-tight mb-2 inline-block">
-              Quantity
-            </span>
-            <Quantity />
-          </div>
-          <div className="px-7 pb-8">
-            <button className="mt-12 lg:mt-0 flex gap-x-2 justify-center items-center black py-5 px-20 rounded-xl w-full lg:mx-0">
-              <span className="text-white font-bold text-lg">Add to cart</span>
-            </button>
-          </div>
-        </div>
+        <AddToCart data={data} />
         <div>
           <h3 className="text-xl font-bold tracking-tight border-b-[1px] pb-3">
             Description
