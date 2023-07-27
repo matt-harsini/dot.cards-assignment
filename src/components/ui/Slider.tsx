@@ -2,13 +2,14 @@
 
 import { data } from "@/data";
 import Card from "../Card";
+// @ts-ignore
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import { useEffect, useRef } from "react";
 
 type Product = {
   id: number;
-  url: string;
+  url: string[];
   name: string;
   price: string;
   brand: string;
