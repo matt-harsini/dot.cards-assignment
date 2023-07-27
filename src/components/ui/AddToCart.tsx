@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 export default function AddToCart({
   data,
@@ -8,8 +8,19 @@ export default function AddToCart({
   data: { brand: string; name: string; price: string };
 }) {
   const [counter, setCounter] = useState(1);
+
+  function handleClick() {
+    localStorage.setItem(
+      "data",
+      JSON.stringify({
+        ...data,
+        counter,
+      })
+    );
+  }
+
   return (
-    <div className="rounded-3xl shadow-sm flex flex-col gap-y-4">
+    <div className="rounded-3xl shadow-md flex flex-col gap-y-4">
       <div className="flex-col items-start gap-y-3 flex p-8">
         <div>
           <h3 className="text-2xl font-bold tracking-tight">{data.brand}</h3>
@@ -25,8 +36,13 @@ export default function AddToCart({
         <Quantity counter={counter} setCounter={setCounter} />
       </div>
       <div className="px-7 pb-8">
-        <button className="mt-12 lg:mt-0 flex gap-x-2 justify-center items-center black py-5 px-20 rounded-xl w-full lg:mx-0">
-          <span className="text-white font-bold text-lg">Add to cart</span>
+        <button
+          onClick={handleClick}
+          className="mt-12 lg:mt-0 flex gap-x-2 justify-center items-center black py-5 px-20 rounded-xl w-full lg:mx-0"
+        >
+          <span className="text-white font-bold text-lg" onClick={handleClick}>
+            Add to cart
+          </span>
         </button>
       </div>
     </div>
