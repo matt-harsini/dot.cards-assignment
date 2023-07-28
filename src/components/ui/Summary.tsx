@@ -3,8 +3,17 @@
 import { CartContext } from "@/context/Context";
 import { useContext } from "react";
 
+type Price = {
+  price: number;
+};
+
 export default function Summary() {
   const Context = useContext(CartContext);
+  const price = Context?.payload.reduce((acc, cur) => {
+    acc += +cur.price.substring(1) * cur.counter;
+    return acc;
+  }, 0);
+
   return (
     <div className="flex flex-col rounded-2xl shadow-md max-h-max">
       <div className="p-6">
@@ -13,7 +22,7 @@ export default function Summary() {
           <span className="mt-4 text-lg font-medium tracking-tight">
             Subtotal
           </span>
-          <span>$30.00</span>
+          <span>${price}</span>
         </div>
         <div className="flex justify-between">
           <span className="mt-4 text-lg font-medium tracking-tight">

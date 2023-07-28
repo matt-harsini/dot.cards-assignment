@@ -1,7 +1,7 @@
 "use client";
 
 import { CartContext } from "@/context/Context";
-import { SetStateAction, useContext, useState } from "react";
+import { SetStateAction, useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import { Quantity } from "./AddToCart";
 
@@ -39,8 +39,17 @@ function Item(product: Data) {
     Context?.setPayload(payload as Data[]);
   };
 
+  useEffect(() => {
+    Context?.setPayload(
+      (prevState) =>
+        prevState.map((e) => {
+          return e.id === product.id ? { ...product, counter } : { ...e };
+        }) as Data[]
+    );
+  }, [counter]);
+
   return (
-    <div className="flex gap-x-4 border-b-[1px] py-4">
+    <div className="flex gap-x-4 border-b-[1px] py-8">
       <Image src={product.url[0]} width={246} height={175} alt={product.name} />
       <div className="flex flex-col justify-between flex-1">
         <div>
@@ -50,9 +59,9 @@ function Item(product: Data) {
           </div>
           <span className="text-gray-600">{product.brand}</span>
         </div>
-        <div className="flex flex-col lg:flex-row gap-x-8">
+        <div className="flex flex-col items-start lg:items-stretch lg:flex-row gap-x-8">
           <Quantity counter={counter} setCounter={setCounter} />
-          <button className="font-bold text-md underline" onClick={removeItem}>
+          <button className="mt-4 font-bold text-md underline" onClick={removeItem}>
             Remove
           </button>
         </div>
