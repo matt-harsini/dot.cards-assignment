@@ -28,17 +28,21 @@ export default function Summary() {
           <span className="mt-4 text-lg font-medium tracking-tight">
             Shipping and delivery
           </span>
-          <span>$30.00</span>
+          <span>{price !== 0 ? "$30.00" : "$0"}</span>
         </div>
         <div className="flex justify-between">
           <span className="mt-4 text-lg font-medium tracking-tight">Tax</span>
-          <span>$20.00</span>
+          <span>{price !== 0 ? "$20.00" : "$0"}</span>
         </div>
         <div className="flex justify-between">
           <span className="mt-4 text-lg font-medium tracking-tight">
             Discount
           </span>
-          <span className="text-[#EC5E2A]">-$6.00</span>
+          <span
+            className={`${price === 0 ? "text-gray-900" : "text-[#EC5E2A]"}`}
+          >
+            {price !== 0 ? "-$6.00" : "$0"}
+          </span>
         </div>
       </div>
       <div className="border-b-[1px]" />
