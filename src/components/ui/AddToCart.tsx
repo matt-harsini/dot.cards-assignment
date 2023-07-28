@@ -60,7 +60,7 @@ export default function AddToCart({
   );
 }
 
-function Quantity({
+export function Quantity({
   counter,
   setCounter,
 }: {
