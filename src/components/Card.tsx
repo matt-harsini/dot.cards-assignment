@@ -23,7 +23,7 @@ export default function Card({
         <span className="text-lg font-medium">{price}</span>
       </div>
       <div className="block lg:hidden">
-        <Image src={url[0]} width={546} height={375} alt={name} />
+        <Image src={url[0]} width={346} height={175} alt={name} />
       </div>
       <div className="lg:hidden flex-col flex">
         <h4 className="text-xl font-bold tracking-tight mt-3">{brand}</h4>

@@ -22,7 +22,11 @@ export default function Cart() {
           />
         </svg>
         <span>View Cart</span>
-        {!!Context?.payload?.length && <span>{Context.payload.length}</span>}
+        {!!Context?.payload?.length && (
+          <span className="flex flex-col items-center justify-center w-[24px] h-[24px] rounded-full text-white bg-[#ec5e2a]">
+            {Context.payload.length}
+          </span>
+        )}
       </button>
     </Link>
   );

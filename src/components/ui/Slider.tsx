@@ -53,6 +53,7 @@ export default function Slider() {
             gap: "30px",
             pagination: false,
             arrows: false,
+            autoWidth: true,
           }}
           ref={splide}
         >
