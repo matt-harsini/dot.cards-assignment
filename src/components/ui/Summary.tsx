@@ -32,20 +32,20 @@ export default function Summary() {
         </div>
         <div className="flex justify-between">
           <span className="mt-4 text-lg font-medium tracking-tight">Tax</span>
-          <span>$30.00</span>
+          <span>$20.00</span>
         </div>
         <div className="flex justify-between">
           <span className="mt-4 text-lg font-medium tracking-tight">
             Discount
           </span>
-          <span>$30.00</span>
+          <span className="text-[#EC5E2A]">-$6.00</span>
         </div>
       </div>
       <div className="border-b-[1px]" />
       <div className="p-6">
         <div className="flex justify-between">
           <h4 className="font-bold tracking-tight text-xl">Total</h4>
-          <span>$30.00</span>
+          <span>${price! + 30 + 20 - 6}</span>
         </div>
       </div>
       <div className="p-6">
