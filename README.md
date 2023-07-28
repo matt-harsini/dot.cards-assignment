@@ -4,9 +4,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 Fun challenge, really enjoyed implementing a design from figma. If I had more time and I needed to deploy this wesbite to production, I would make sure that older browsers are compatible with this website by using appropriate CSS fallbacks when necessary.
 
-I would also spend more time on the design on different screen sizes. My implementation is already responsive on desktop and mobile devices, but I would tweak a lot more CSS to make it more fluid.
-
-Lastly, I would spend a lot more time on architecture, and organizing code to make future development more robust. Perhaps set up a database instead of hardcoding.
+ I would also spend a lot more time on architecture, and organizing code to make future development more robust. Perhaps set up a database instead of hardcoding.
 
 ## Getting Started
 

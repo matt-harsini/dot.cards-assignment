@@ -31,7 +31,7 @@ export default function Items() {
 }
 
 function Item(product: Data) {
-  const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(product.counter);
   const Context = useContext(CartContext);
 
   const removeItem = () => {
@@ -61,7 +61,10 @@ function Item(product: Data) {
         </div>
         <div className="flex flex-col items-start lg:items-stretch lg:flex-row gap-x-8">
           <Quantity counter={counter} setCounter={setCounter} />
-          <button className="mt-4 font-bold text-md underline" onClick={removeItem}>
+          <button
+            className="mt-4 font-bold text-md underline"
+            onClick={removeItem}
+          >
             Remove
           </button>
         </div>
