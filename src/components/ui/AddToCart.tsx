@@ -27,6 +27,12 @@ export default function AddToCart({
       Context.setPayload(
         (prevState) => [...prevState, { ...data, counter }] as Data[]
       );
+    Context.setPayload(
+      (prevState) =>
+        prevState.map((product) => {
+          return product.id === data.id ? { ...data, counter } : { ...product };
+        }) as Data[]
+    );
   };
 
   return (
