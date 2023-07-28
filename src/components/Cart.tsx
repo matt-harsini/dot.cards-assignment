@@ -1,8 +1,11 @@
 "use client";
 
+import { CartContext } from "@/context/Context";
 import Link from "next/link";
+import { useContext } from "react";
 
 export default function Cart() {
+  const Context = useContext(CartContext);
   return (
     <Link href="/cart">
       <button className="flex gap-x-2.5 justify-center items-center py-2 px-6 border-[1px] rounded-lg border-[#201b21]">
@@ -19,6 +22,7 @@ export default function Cart() {
           />
         </svg>
         <span>View Cart</span>
+        {!!Context?.payload?.length && <span>{Context.payload.length}</span>}
       </button>
     </Link>
   );

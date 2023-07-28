@@ -1,19 +1,40 @@
 "use client";
 
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, SetStateAction } from "react";
 
-export const Context = createContext(null);
+type Data = {
+  id: number;
+  brand: string;
+  name: string;
+  price: string;
+  url: string[];
+  counter: number;
+};
 
-export function ContextProvider({ children }) {
-  const [payload, setPayload] = useState(0);
-  
+type Context = {
+  payload: Data[];
+  setPayload: React.Dispatch<SetStateAction<Data[]>>;
+};
+
+export const CartContext = createContext<Context | null>(null);
+
+export function ContextProvider({ children }: { children: React.ReactNode }) {
+  const initialState = () => {
+    if (localStorage.getItem("data")) {
+      return JSON.parse(localStorage.getItem("data") as string);
+    }
+    return [];
+  };
+
+  const [payload, setPayload] = useState(initialState);
+
   useEffect(() => {
     localStorage.setItem("data", JSON.stringify(payload));
   }, [payload]);
 
   return (
-    <Context.Provider value={{ payload, setPayload }}>
+    <CartContext.Provider value={{ payload, setPayload }}>
       {children}
-    </Context.Provider>
+    </CartContext.Provider>
   );
 }

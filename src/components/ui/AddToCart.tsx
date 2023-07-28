@@ -1,6 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { CartContext } from "@/context/Context";
+import { useContext, useState } from "react";
+
+type Data = {
+  id: number;
+  brand: string;
+  name: string;
+  price: string;
+  url: string[];
+  counter: number;
+};
 
 export default function AddToCart({
   data,
@@ -8,6 +18,16 @@ export default function AddToCart({
   data: { brand: string; name: string; price: string; id: number };
 }) {
   const [counter, setCounter] = useState(1);
+
+  const Context = useContext(CartContext);
+
+  const handleClick = () => {
+    if (!Context) return;
+    if (Context.payload.filter((e) => e.id === data.id).length === 0)
+      Context.setPayload(
+        (prevState) => [...prevState, { ...data, counter }] as Data[]
+      );
+  };
 
   return (
     <div className="rounded-3xl shadow-md flex flex-col gap-y-4">
@@ -25,7 +45,7 @@ export default function AddToCart({
         </span>
         <Quantity counter={counter} setCounter={setCounter} />
       </div>
-      <div className="px-7 pb-8">
+      <div className="px-7 pb-8" onClick={handleClick}>
         <button className="mt-12 lg:mt-0 flex gap-x-2 justify-center items-center black py-5 px-20 rounded-xl w-full lg:mx-0">
           <span className="text-white font-bold text-lg">Add to cart</span>
         </button>
