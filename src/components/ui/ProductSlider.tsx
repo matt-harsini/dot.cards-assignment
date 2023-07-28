@@ -51,11 +51,11 @@ export default function ProductSlider({
         }}
         ref={splide}
       >
-        {data.url.map((image) => {
+        {data.url.map((image, index) => {
           return (
             <SplideSlide key={image}>
               <Image
-                src={data.url[0]}
+                src={data.url[index]}
                 width="0"
                 height="0"
                 sizes="100vw"

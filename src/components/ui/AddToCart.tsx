@@ -5,19 +5,9 @@ import { useState } from "react";
 export default function AddToCart({
   data,
 }: {
-  data: { brand: string; name: string; price: string };
+  data: { brand: string; name: string; price: string; id: number };
 }) {
   const [counter, setCounter] = useState(1);
-
-  function handleClick() {
-    localStorage.setItem(
-      "data",
-      JSON.stringify({
-        ...data,
-        counter,
-      })
-    );
-  }
 
   return (
     <div className="rounded-3xl shadow-md flex flex-col gap-y-4">
@@ -36,13 +26,8 @@ export default function AddToCart({
         <Quantity counter={counter} setCounter={setCounter} />
       </div>
       <div className="px-7 pb-8">
-        <button
-          onClick={handleClick}
-          className="mt-12 lg:mt-0 flex gap-x-2 justify-center items-center black py-5 px-20 rounded-xl w-full lg:mx-0"
-        >
-          <span className="text-white font-bold text-lg" onClick={handleClick}>
-            Add to cart
-          </span>
+        <button className="mt-12 lg:mt-0 flex gap-x-2 justify-center items-center black py-5 px-20 rounded-xl w-full lg:mx-0">
+          <span className="text-white font-bold text-lg">Add to cart</span>
         </button>
       </div>
     </div>
